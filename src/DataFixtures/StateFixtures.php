@@ -20,11 +20,13 @@ class StateFixtures extends Fixture
         $sta = new State();
         $sta->setLabel("Trouvé");
         $sta->setColor("green");
+        $this->addReference('state-1', $sta);
         $manager->persist($sta);
         
         $sta = new State();
         $sta->setLabel("Perdu");
         $sta->setColor("FireBrick ");
+        $this->addReference('state-2', $sta);
         $manager->persist($sta);
         
         $manager->flush();

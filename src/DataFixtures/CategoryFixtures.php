@@ -14,6 +14,7 @@ class CategoryFixtures extends Fixture
         $category->setLabel('Doudou');
         $category->setIcon('fa-child');
         $category->setColor('blue');
+        $this->addReference('category-1', $category);
         
         $manager->persist($category);
         $manager->flush();
@@ -22,6 +23,7 @@ class CategoryFixtures extends Fixture
         $category->setLabel('Porte-fueille');
         $category->setIcon('fa-address-card');
         $category->setColor('DarkGoldenRod ');
+        $this->addReference('category-2', $category);
         $manager->persist($category);
         $manager->flush();
         
@@ -29,6 +31,7 @@ class CategoryFixtures extends Fixture
         $category->setLabel('Clés');
         $category->setIcon('fa-key');
         $category->setColor('DarkSlateGrey ');
+        $this->addReference('category-3', $category);
         $manager->persist($category);
         $manager->flush();
         
@@ -36,6 +39,7 @@ class CategoryFixtures extends Fixture
         $category->setLabel('Téléphone');
         $category->setIcon('ffa-phone');
         $category->setColor('Green');
+        $this->addReference('category-4', $category);
         $manager->persist($category);
         $manager->flush();
         

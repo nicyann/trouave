@@ -11,7 +11,7 @@ class CategoryFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $category = new Category();
-        $category->setLabel('Doudou');
+        $category->setLabel('Jouet');
         $category->setIcon('fa-child');
         $category->setColor('blue');
         $this->addReference('category-1', $category);
@@ -20,7 +20,7 @@ class CategoryFixtures extends Fixture
         $manager->flush();
         
         $category = new Category();
-        $category->setLabel('Porte-fueille');
+        $category->setLabel('Portefueille');
         $category->setIcon('fa-address-card');
         $category->setColor('DarkGoldenRod ');
         $this->addReference('category-2', $category);

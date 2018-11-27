@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Traobject;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use PhpParser\Node\Expr\Array_;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
@@ -18,6 +19,18 @@ class TraobjectRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Traobject::class);
     }
+    
+//    public function FindByState(State $state, Traobject $traobject  ) :Array
+//    {
+//        $qb =$this->createQueryBuilder('t');
+//
+//        $qb = $qb->innerJoin('t.state', 's' )
+//            ->where($qb->expr()->eq('s', ':traobject');
+//
+//        return $qb->setParameters(':traobject', $traobject->getId());
+//    }
+    
+    
 
     // /**
     //  * @return Traobject[] Returns an array of Traobject objects

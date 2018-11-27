@@ -8,7 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TraobjectController extends AbstractController
 {
     /**
-     * @Route("/traobject", name="traobject")
+     * @Route("/", name="traobject")
      */
     public function index()
     {

@@ -1,0 +1,16 @@
+<div class="card object-card">
+
+
+    <span class="badge badge-primary badge-found"><i class="fa fa-map-pin"></i> Trouvé</span>
+    <img class="card-img-top" src="{{ asset('uploads/' ~ traobj.picture) }}" alt="Portefeuille">
+    <div class="card-body">
+        <h5 class="card-title"></h5>
+        <ul class="object-features">
+            <li><a href="#" class="badge" style="background-color: #dc143c;"><i class="fa fa-money"></i> {{ traobj.title }}</a></li>
+            <li><a href="#" class="badge badge-info"><i class="fa fa-calendar"></i>{{ traobj.eventAt|date("d-m-y") }}</a></li>
+            <li><a href="#" class="badge badge-info"><i class="fa fa-map-marker"></i> {{ traobj.county.label }}</a></li>
+        </ul>
+    </div>
+    <a href="object.html" class="card-footer-btn btn btn-primary"><i class="fa fa-eye"></i> Afficher</a>
+
+</div>

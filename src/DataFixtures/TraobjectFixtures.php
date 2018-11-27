@@ -20,6 +20,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
     {
         $traobj = new Traobject();
         $traobj->setTitle('Pifou');
+        $traobj->setPicture("teddy-bear.jpg");
         $traobj->setEventAt(new \DateTime("2018-11-21"));
         $traobj->setCity("Rennes");
         $traobj->setCreatedAt(new \DateTime("2018-11-21"));
@@ -31,6 +32,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
     
         $traobj = new Traobject();
         $traobj->setTitle('clémaison');
+        $traobj->setPicture("keys.jpg");
         $traobj->setEventAt(new \DateTime("2018-11-22"));
         $traobj->setCity("Rennes");
         $traobj->setCreatedAt(new \DateTime("2018-11-22"));
@@ -41,7 +43,8 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $manager->persist($traobj);
     
         $traobj = new Traobject();
-        $traobj->setTitle('porte');
+        $traobj->setTitle('porte-feuille');
+        $traobj->setPicture("wallet.jpg");
         $traobj->setEventAt(new \DateTime("2018-11-23"));
         $traobj->setCity("Rennes");
         $traobj->setCreatedAt(new \DateTime("2018-11-23"));

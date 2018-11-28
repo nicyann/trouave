@@ -8,10 +8,13 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Faker\Factory;
+
 
 class UserFixtures extends Fixture
 {
     private $passwordEncoder;
+    
     public function __construct(UserPasswordEncoderInterface $passwordEncoder)
     {
         $this->passwordEncoder = $passwordEncoder;
@@ -22,35 +25,29 @@ class UserFixtures extends Fixture
      */
     public function load(ObjectManager $manager)
     {
-    $use = new User();
-    $use->setFirstname('Yann');
-    $use->setLastname('Nicolle');
-    $use->setEmail('yann.nicolle@orange.fr');
-    $use->setPassword($this->passwordEncoder->encodePassword($use, 'ynicolle'));
-    $manager->persist($use);
-    $this->addReference('user-1' , $use );
+        $admin = new User();
+        $admin->setFirstname('Yann');
+        $admin->setLastname('Nicolle');
+        $admin->setEmail('yann.nicolle@orange.fr');
+        $admin->setPassword($this->passwordEncoder->encodePassword($admin, 'ynicolle'));
+        $admin->setRoles(["ROLE_ADMIN"]);
+        $manager->persist($admin);
     
+        $faker =Factory::create('fr_FR');
     
-    $use = new User();
-    $use->setFirstname('Jeff');
-    $use->setLastname('viellard');
-    $use->setEmail('jeffviellarde@orange.fr');
-    $use->setPassword($this->passwordEncoder->encodePassword($use, 'ynicolle'));
-    $manager->persist($use);
-    $this->addReference('user-2' , $use );
-    
-    
-    
-    $use = new User();
-    $use->setFirstname('Franchon');
-    $use->setLastname('Malkoi');
-    $use->setEmail('yfrmalkoi@orange.fr');
-    $use->setPassword($this->passwordEncoder->encodePassword($use, 'ynicolle'));
-    $manager->persist($use);
-    $this->addReference('user-3' , $use );
-    
-    $manager->flush();
-    
+        for ($i = 0; $i < 20; $i++) {
+            $user = new User();
+            $user->setFirstname($faker->firstName);
+            $user->setLastname($faker->lastName);
+            $user->setEmail($faker->email);
+            $user->setPassword(($this->passwordEncoder->encodePassword($user, '1234')));
+            $user->setRoles(["ROLE_USER"]);
+            $manager->persist($user);
+            $this->addReference('user-' . ($i + 1), $user);
+        }
+        
+        $manager->flush();
+        
     }
     
 }

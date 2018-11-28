@@ -1,0 +1,36 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+
+    <section>
+        <div class="container">
+            <h2>Basic Table</h2>
+            <p>The .table class adds basic styling (light padding and horizontal dividers) to a table:</p>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>picture</th>
+                    <th>Description</th>
+                    <th>Date</th>
+                    <th>Category</th>
+                    <th>Departement</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for trouvobject in trouvobjects %}
+                    <tr>
+                        <td>{{ trouvobject.title }}</td>
+                        <td><{{ asset('uploads/' ~ traobj.picture) }}/td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+{% endblock %}

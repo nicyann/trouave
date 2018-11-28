@@ -4,7 +4,7 @@
 
     <section>
         <div class="container">
-            <h2>Objets trouvés</h2>
+            <h2>Objets perdus</h2>
             <table class="table">
                 <thead>
                 <tr>
@@ -17,14 +17,14 @@
                 </tr>
                 </thead>
                 <tbody >
-                {% for trouvobject in trouvobjects %}
+                {% for lostobject in lostobjects %}
                     <tr>
-                        <td>{{ trouvobject.title }}</td>
-                        <td><img src="{{ asset('uploads/' ~ trouvobject.picture) }}" alt="{{ trouvobject.title }}" class="taille-img"></td>
+                        <td>{{ lostobject.title }}</td>
+                        <td><img src="{{ asset('uploads/' ~ lostobject.picture) }}" alt="{{ lostobject.title }}" class="taille-img"></td>
                         <td></td>
-                        <td>{{ trouvobject.eventAt|date("d/m/y") }}</td>
-                        <td>{{ trouvobject.category.label }}</td>
-                        <td>{{ trouvobject.county.label }}</td>
+                        <td>{{ lostobject.eventAt|date("d/m/y") }}</td>
+                        <td>{{ lostobject.category.label }}</td>
+                        <td>{{ lostobject.county.label }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

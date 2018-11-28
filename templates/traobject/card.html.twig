@@ -2,7 +2,7 @@
 
 
     <span class="badge badge-primary badge-found"><i class="fa fa-map-pin"></i> {{ traobj.state.label }}</span>
-    <img class="card-img-top" src="{{ asset('uploads/' ~ traobj.picture) }}" alt="Portefeuille">
+    <img class="card-img-top" src="{{ asset('uploads/' ~ traobj.picture) }}" alt="{{ traobj.title }}">
     <div class="card-body">
         <h5 class="card-title">{{ traobj.title }}</h5>
         <ul class="object-features">

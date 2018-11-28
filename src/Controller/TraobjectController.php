@@ -47,4 +47,17 @@ class TraobjectController extends AbstractController
         
         
     }
+    
+    /**
+     * @Route("/lost" , name="lostobject")
+     */
+    public function ObjectLost()
+    {
+        $stateLost =$this->getDoctrine()->getRepository(State::class)->findOneBy(["label" => State::LOST]);
+        $lostobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(['state' => $stateLost]);
+        
+        return $this->render('traobject/lostobject.html.twig', [
+            'lostobjects' => $lostobjects
+        ]);
+    }
 }

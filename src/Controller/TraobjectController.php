@@ -4,8 +4,12 @@ namespace App\Controller;
 
 use App\Entity\State;
 use App\Entity\Traobject;
+use App\Form\TraobjectType;
+use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Form\FormTypeInterface;
 
 class TraobjectController extends AbstractController
 {
@@ -20,7 +24,35 @@ class TraobjectController extends AbstractController
     }
     
     /**
-     * @Route ("/show/{id}", name="show_traobject")
+     * @Route("traobject/new", name="traobject_create", methods="GET|POST")
+     */
+    public function create(Request $request, ObjectManager $manager)
+    {
+        $traobject =new Traobject();
+        
+        
+        $form = $this->createForm(TraobjectType::class, $traobject);
+        
+        $form->handleRequest($request);
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $em =$this->getDoctrine()->getManager();
+            $em->persist($traobject);
+            $em->flush();
+    
+            return $this->redirectToRoute('traobject_create');
+        }
+        
+    return $this->render('traobject/create.html.twig',[
+        'form' => $form->createView()
+        ]);
+        
+
+
+    }
+    
+    /**
+     * @Route ("/traobject/{id}", name="show_traobject")
      */
     public function show($id)
     {

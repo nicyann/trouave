@@ -22,6 +22,7 @@ class TraobjectFixtures extends Fixture implements DependentFixtureInterface
         $traobj->setTitle('Pifou');
         $traobj->setPicture("teddy-bear.jpg");
         $traobj->setEventAt(new \DateTime("2018-11-21"));
+        $traobj->setDescription('Trouvé un banc au jardin des plantes');
         $traobj->setCity("Rennes");
         $traobj->setCreatedAt(new \DateTime("2018-11-21"));
         $traobj->setCategory($this->getReference('category-1'));

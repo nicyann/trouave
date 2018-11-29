@@ -36,6 +36,7 @@ class TraobjectController extends AbstractController
         $form->handleRequest($request);
         
         if ($form->isSubmitted() && $form->isValid()) {
+            $traobject->setCreatedAt(new \DateTime());
             $em =$this->getDoctrine()->getManager();
             $em->persist($traobject);
             $em->flush();

@@ -86,9 +86,9 @@ class Traobject
     private $updatedAt;
 
     /**
-     * @var \Category
+     * @var Category
      *
-     * @ORM\ManyToOne(targetEntity="Category")
+     * @ORM\ManyToOne(targetEntity="Category", inversedBy="traobjects")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="category_id", referencedColumnName="id")
      * })
@@ -96,9 +96,9 @@ class Traobject
     private $category;
 
     /**
-     * @var \County
+     * @var County
      *
-     * @ORM\ManyToOne(targetEntity="County")
+     * @ORM\ManyToOne(targetEntity="County", inversedBy="traobject")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="county_id", referencedColumnName="id")
      * })
@@ -106,7 +106,7 @@ class Traobject
     private $county;
 
     /**
-     * @var \State
+     * @var State
      *
      * @ORM\ManyToOne(targetEntity="State")
      * @ORM\JoinColumns({

@@ -1,7 +1,7 @@
 <ul class="list-group-flush">
     {% for county in counties %}
         <li>
-            <a href="{{ path('county') }}" >
+            <a href="{{ path('show_traobject', {'id':county.id}) }}" >
                 {{ county.label }}
 
             </a>

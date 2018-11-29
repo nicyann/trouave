@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -34,6 +36,12 @@ class Category
      * @ORM\Column(name="icon", type="string", length=255, nullable=false)
      */
     private $icon;
+    
+    /**
+     * @var Collection
+     * @ORM\OneToMany(targetEntity="App\Entity\Traobject", mappedBy="category")
+     */
+    private $traobjects;
 
     /**
      * @var string
@@ -41,7 +49,15 @@ class Category
      * @ORM\Column(name="color", type="string", length=255, nullable=false)
      */
     private $color;
-
+    
+    /**
+     * Category constructor.
+     */
+    public function __construct()
+    {
+        $this->traobjects = new ArrayCollection();
+    }
+    
     public function getId(): ?int
     {
         return $this->id;
@@ -81,6 +97,22 @@ class Category
         $this->color = $color;
 
         return $this;
+    }
+    
+    /**
+     * @return Collection
+     */
+    public function getTraobjects(): Collection
+    {
+        return $this->traobjects;
+    }
+    
+    /**
+     * @param Collection $traobjects
+     */
+    public function setTraobjects(Collection $traobjects): void
+    {
+        $this->traobjects = $traobjects;
     }
     
     public function __toString()

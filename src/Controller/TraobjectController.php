@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\County;
 use App\Entity\State;
 use App\Entity\Traobject;
 use App\Form\TraobjectType;
@@ -63,11 +64,15 @@ class TraobjectController extends AbstractController
         
         $cat= $this->getDoctrine()->getRepository(Category::class)->find($id);
         $cattraobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(['category' => $cat]);
+    
+        $county= $this->getDoctrine()->getRepository(County::class)->find($id);
+        $countytraobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(['county' => $county]);
         
         
         return $this->render('traobject/show.html.twig', [
             'traobj' => $traobj,
-            'cattraobjects' => $cattraobjects
+            'cattraobjects' => $cattraobjects,
+            'countytraobjects' => $countytraobjects
         ]);
     }
     

@@ -1,0 +1,12 @@
+<ul class="list-group-flush">
+    {% for county in counties %}
+        <li>
+            <a href="{{ path('county') }}" >
+                {{ county.label }}
+
+            </a>
+        </li>
+    {% endfor %}
+
+
+</ul>

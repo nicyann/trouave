@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\State;
 use App\Entity\Traobject;
 use App\Form\TraobjectType;
@@ -60,8 +61,13 @@ class TraobjectController extends AbstractController
         
         $traobj = $this->getDoctrine()->getRepository(Traobject::class)->find($id);
         
+        $cat= $this->getDoctrine()->getRepository(Category::class)->find($id);
+        $cattraobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(['category' => $cat]);
+        
+        
         return $this->render('traobject/show.html.twig', [
-            'traobj' => $traobj
+            'traobj' => $traobj,
+            'cattraobjects' => $cattraobjects
         ]);
     }
     

@@ -92,18 +92,17 @@
 
 
                     <li><a class="text-muted" href="#">
-                            {{ render(controller('App\\Controller\\CategoryController::catlist')) }}</a></li>
+                            {{ render(controller('App\\Controller\\CategoryController::catlist')) }}
+                            </a></li>
 
                 </ul>
             </div>
             <div class="col-6 col-md">
                 <h5>Departements</h5>
                 <ul class="list-unstyled text-small">
-                    <li><a class="text-muted" href="#">Ille-et-vilaine</a></li>
-                    <li><a class="text-muted" href="#">Morbihzn</a></li>
-                    <li><a class="text-muted" href="#">Fôte-d'armor</a></li>
-                    <li><a class="text-muted" href="#">SFinister</a></li>
-                    <li><a class="text-muted" href="#">Loire-Atlantique</a></li>
+                    <li><a class="text-muted" href="#">
+                            {{ render(controller('App\\Controller\\CountyController::countylist')) }}
+                        </a></li>
                 </ul>
             </div>
             <div class="col-6 col-md">

@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Traobject;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,4 +24,6 @@ class CategoryController extends AbstractController
         
         return $this->render('category/catlist.html.twig', ['categories' => $categories]);
     }
+    
+
 }

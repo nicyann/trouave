@@ -18,6 +18,7 @@ class CategoryController extends AbstractController
             'category' => $category,
         ]);
     }
+//    récupération de toutes les catégories et les envoie dans la vue catlist
     public function  catlist()
     {
         $categories = $this->getDoctrine()->getRepository(Category::class)->findAll();

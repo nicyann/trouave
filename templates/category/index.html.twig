@@ -6,10 +6,15 @@
 
     <h1>{{ category.label }}</h1>
 
-    <section class="row">
+    <section class="container">
+
+    <div class="row"></div>
+        <div class="col-md-3">
+            <div class="card">
         {% for traobject in category.traobjects %}
             {% include'traobject/card.html.twig' with {'traobj' : traobject} only %}
         {% endfor %}
+            </div>
+        </div>
     </section>
-
 {% endblock %}

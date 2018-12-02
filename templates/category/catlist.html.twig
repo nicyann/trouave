@@ -1,6 +1,7 @@
 <ul class="list-group-flush">
     {% for category in categories %}
         <li>
+            {#affichage de l'id dans le lien#}
             <a href="{{ path('category', {'id': category.id}) }}" >
                 {{ category.label }}
             </a>

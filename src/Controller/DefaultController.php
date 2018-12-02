@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends BaseController
 {
+
+//    fonction homepage  : affichage de tous les éléments de la table traobject
     /**
      * @Route("/", name="homepage")
      */

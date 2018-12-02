@@ -25,18 +25,21 @@ class TraobjectController extends AbstractController
         ]);
     }
     
+//    Fonction pour la création du formulaire fonction create qui a comme parametre $request (objet de la requete) la  de la table request
+// Object manager manipulation des bases de dpnnées (création , maj, sup)
     /**
      * @Route("traobject/new", name="traobject_create", methods="GET|POST")
      */
+    
     public function create(Request $request, ObjectManager $manager)
     {
         $traobject =new Traobject();
         
-        
+//        création du formulaire lié à l'article (attaention appel à la classe TraobjectType qui contient les éléments du formulaire)
         $form = $this->createForm(TraobjectType::class, $traobject);
-        
+//        Analyse de la requete
         $form->handleRequest($request);
-        
+//        vérification si la requete est soumise et valide
         if ($form->isSubmitted() && $form->isValid()) {
             $traobject->setCreatedAt(new \DateTime());
             $em =$this->getDoctrine()->getManager();
@@ -45,7 +48,7 @@ class TraobjectController extends AbstractController
     
             return $this->redirectToRoute('traobject_create');
         }
-        
+//        renvoi de l'objet createview qui correspond à l'affichage de la requette
     return $this->render('traobject/create.html.twig',[
         'form' => $form->createView()
         ]);
@@ -53,29 +56,20 @@ class TraobjectController extends AbstractController
 
 
     }
+//    Fonction show pour l'affichage des objets en fonction de l'Id passé en paramètre ici ce sera la categorie et le département
     
     /**
      * @Route ("/traobject/{id}", name="show_traobject")
      */
-    public function show($id)
+    public function show(Traobject $traobj)
     {
-        
-        $traobj = $this->getDoctrine()->getRepository(Traobject::class)->find($id);
-        
-        $cat= $this->getDoctrine()->getRepository(Category::class)->find($id);
-        $cattraobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(['category' => $cat]);
-    
-        $county= $this->getDoctrine()->getRepository(County::class)->find($id);
-        $countytraobjects = $this->getDoctrine()->getRepository(Traobject::class)->findBy(['county' => $county]);
-        
-        
+//        les résultats sont renvoyés dans la vue show de trabobject
+//        On résupère les variables
         return $this->render('traobject/show.html.twig', [
-            'traobj' => $traobj,
-            'cattraobjects' => $cattraobjects,
-            'countytraobjects' => $countytraobjects
+            'traobj' => $traobj
         ]);
     }
-    
+//    fonction pour la récupération des objets trouvés
     /**
      * @Route ("/found", name="foundobjet")
      *
